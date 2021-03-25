@@ -1,0 +1,42 @@
+﻿@model IEnumerable<student>
+@{
+    ViewBag.Title = "Student data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Students' data</h2>
+<table class="table-bordered table-responsive">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.id)</th>
+            <th>@Html.DisplayNameFor(m => m.name)</th>
+            <th>@Html.DisplayNameFor(m => m.age)</th>
+            <th>@Html.DisplayNameFor(m => m.email)</th>
+            <th>@Html.DisplayNameFor(m => m.Department.dept_name)</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        { 
+        <tr>
+            <td>@s.id</td>
+            <td>@s.name</td>
+            <td>@s.age</td>
+            <td>@s.email</td>
+            <td>@s.Department.dept_name</td>
+            <td>
+                @Ajax.ActionLink("Details", "details", "student", new { id = s.id }, new AjaxOptions { UpdateTargetId = "details", InsertionMode = InsertionMode.Replace }, new { @class = "btn btn-info" })
+                @Html.ActionLink("edit", "edit", "student", new { id = s.id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "delete", "student", new { id = s.id }, new { @class = "btn btn-danger" })
+            </td>
+
+</tr>
+        }    </tbody>
+</table>
+
+<div id="details" class="container "></div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    }

@@ -1,0 +1,25 @@
+﻿@model student
+@Html.LabelFor(a => a.name)
+@Html.EditorFor(a => a.name)
+@Html.ValidationMessageFor(a => a.name)
+<br />
+@Html.LabelFor(a => a.age)
+@Html.EditorFor(a => a.age)
+@Html.ValidationMessageFor(a => a.age)
+<br />
+@Html.LabelFor(a => a.email)
+@Html.EditorFor(a => a.email)
+@Html.ValidationMessageFor(a => a.email)
+<br />
+@Html.LabelFor(a => a.Department.dept_name)
+@Html.DropDownListFor(a => a.Dept_id, ViewBag.s as SelectList)
+<br />
+@Html.EditorFor(a => a.password)
+@Html.ValidationMessageFor(a => a.password)
+<br />
+@Html.EditorFor(a => a.co_password)
+@Html.ValidationMessageFor(a => a.co_password)
+<br />
+@Html.EditorFor(a => a.username)
+@Html.ValidationMessageFor(a => a.username)
+<br />
